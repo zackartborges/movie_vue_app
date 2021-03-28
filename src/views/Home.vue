@@ -56,6 +56,7 @@ export default {
       newMovieYear: "",
       newMoviePlot: "",
       newMovieDirector: "",
+      errors: [],
     };
   },
   created: function () {
@@ -76,10 +77,15 @@ export default {
         plot: this.newMoviePlot,
         director: this.newMovieDirector,
       };
-      axios.post("/api/movies", params).then((response) => {
-        console.log("Successfully added movie!", response.data);
-        this.movies.push(response.data);
-      });
+      axios
+        .post("/api/movies", params)
+        .then((response) => {
+          console.log("Successfully added movie!", response.data);
+          this.movies.push(response.data);
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
     },
     showMovie: function (movie) {
       console.log(movie);
@@ -100,7 +106,7 @@ export default {
         plot: movie.plot,
         director: movie.director,
       };
-      axios.patch("/api/recipes/" + movie.id, params).then((response) => {
+      axios.patch("/api/movies/" + movie.id, params).then((response) => {
         console.log("Succeeeesss!!", response.data);
       });
     },
