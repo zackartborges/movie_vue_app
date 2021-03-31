@@ -42,7 +42,11 @@
     </dialog>
   </div>
 </template>
-<style></style>
+<style>
+body {
+  background-color: blanchedalmond;
+}
+</style>
 <script>
 import axios from "axios";
 // import func from "vue-editor-bridge";
