@@ -1,19 +1,6 @@
 <template>
-  <div class="movies-show">
-    <h1>{{ message }}</h1>
-    <div class="container">
-      <h1>{{ movie.title }}</h1>
-      <p>
-        {{ movie.plot }}
-      </p>
-    </div>
-    <!-- <router-link v-bind:to="`/movies/${recipe.id}/edit`">See more info</router-link> -->
-    <div>
-      <!-- <dialog id="movie-details"> -->
-      <!-- <form method="dialog"> -->
-    </div>
-    <!-- </form> -->
-    <!-- </dialog> -->
+  <div class="movies-edit">
+    <form v-on:submit.prevent="updateMovie(movie)"></form>
   </div>
 </template>
 <style>
@@ -33,15 +20,15 @@ export default {
     };
   },
   created: function () {
-    axios.get("/api/photos" + this.$route.params.id);
+    this.showMovie();
   },
   methods: {
-    // showMovie: function () {
-    //   axios.get("/api/movies/" + this.$route.params.id).then((response) => {
-    //     console.log(response.data);
-    //     this.movie = response.data;
-    //   });
-    // },
+    showMovie: function () {
+      axios.get("/api/movies/" + this.$route.params.id).then((response) => {
+        console.log(response.data);
+        this.movie = response.data;
+      });
+    },
     // destroyMovie: function (movie) {
     //   axios.delete("/api/movies/" + movie.id).then((response) => {
     //     console.log("Success!", response.data);
