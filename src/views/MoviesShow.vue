@@ -33,7 +33,7 @@ export default {
     };
   },
   created: function () {
-    axios.get("/api/photos" + this.$route.params.id);
+    axios.get("/api/movies/" + this.$route.params.id);
   },
   methods: {
     // showMovie: function () {

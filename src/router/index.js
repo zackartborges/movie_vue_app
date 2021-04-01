@@ -7,7 +7,7 @@ import Signup from "../views/Signup.vue";
 import MoviesIndex from "../views/IndexMovies.vue";
 import MoviesNew from "../views/MoviesNew.vue";
 import MoviesShow from "../views/MoviesShow.vue";
-import MoviesEdit from "../views/MovieEdit.vue"
+import MoviesEdit from "../views/MoviesEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -40,7 +40,6 @@ const routes = [
   { path: "/movies/new", name: "movies-new", component: MoviesNew },
   { path: "/movies/:id", name: "movies-show", component: MoviesShow },
   { path: "/movies/:id/edit", name: "movies-edit", component: MoviesEdit },
-
 ];
 
 const router = new VueRouter({
