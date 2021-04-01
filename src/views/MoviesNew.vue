@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="movies-new">
     <h1>{{ message }}</h1>
-    <!-- <div>
+    <div>
       Title:
       <input type="text" v-model="newMovieTitle" />
       Year:
@@ -15,8 +15,8 @@
     <div v-for="movie in movies" v-bind:key="movie">
       <h1>{{ movie.title }}</h1>
       <button v-on:click="showMovie(movie)">More info!</button>
-    </div> -->
-    <!-- <dialog id="movie-details">
+    </div>
+    <dialog id="movie-details">
       <form method="dialog">
         <h1>Movie Info</h1>
         <p>
@@ -39,22 +39,16 @@
         <button v-on:click="destroyMovie(currentMovie)">Terminate Movie</button>
         <button>Close</button>
       </form>
-    </dialog> -->
+    </dialog>
   </div>
 </template>
-<style>
-body {
-  background-color: blanchedalmond;
-}
-</style>
+<style></style>
 <script>
 import axios from "axios";
 // import func from "vue-editor-bridge";
 export default {
   data: function () {
     return {
-      message: "Welcome tweeo Vue.js!",
-      movies: [],
       currentMovie: {},
       newMovieTitle: "",
       newMovieYear: "",
@@ -90,29 +84,6 @@ export default {
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
-    },
-    showMovie: function (movie) {
-      console.log(movie);
-      this.currentMovie = movie;
-      document.querySelector("#movie-details").showModal();
-    },
-    destroyMovie: function (movie) {
-      axios.delete("/api/movies/" + movie.id).then((response) => {
-        console.log("Success!", response.data);
-        var index = this.movies.indexOf(movie);
-        this.movies.splice(index, 1);
-      });
-    },
-    updateMovie: function (movie) {
-      var params = {
-        title: movie.title,
-        year: movie.year,
-        plot: movie.plot,
-        director: movie.director,
-      };
-      axios.patch("/api/movies/" + movie.id, params).then((response) => {
-        console.log("Succeeeesss!!", response.data);
-      });
     },
   },
 };

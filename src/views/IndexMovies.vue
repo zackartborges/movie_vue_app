@@ -2,7 +2,9 @@
   <div class="movies-index">
     <h1>{{ message }}</h1>
     <div v-for="movie in movies" v-bind:key="movie.id">
-      <h1>{{ movie.title }}</h1>
+      <router-link v-bind:to="`/movies/${movie.id}`">
+        <h1>{{ movie.title }}</h1>
+      </router-link>
       <p>{{ movie.plot }}</p>
     </div>
     <!-- <dialog id="movie-details">
