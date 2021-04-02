@@ -1,11 +1,19 @@
 <template>
   <div class="movies-index">
     <h1>{{ message }}</h1>
+
     <div v-for="movie in movies" v-bind:key="movie.id">
-      <router-link v-bind:to="`/movies/${movie.id}`">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <router-link v-bind:to="`/movies/${movie.id}`" class="display-4">
+            <h1>{{ movie.title }}</h1>
+          </router-link>
+          <p>{{ movie.plot }}</p>
+        </div>
+      </div>
+      <!-- <router-link v-bind:to="`/movies/${movie.id}`">
         <h1>{{ movie.title }}</h1>
-      </router-link>
-      <p>{{ movie.plot }}</p>
+      </router-link> -->
     </div>
     <!-- <dialog id="movie-details">
       <form method="dialog">
@@ -44,7 +52,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "Welcome tweeo Vue.js!",
+      message: "All Movies",
       movies: [],
       errors: [],
     };

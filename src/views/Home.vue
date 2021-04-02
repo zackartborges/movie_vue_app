@@ -13,10 +13,13 @@
       <input type="text" v-model="newMovieDirector" />
       <button v-on:click="createMovie">Add a Movie!</button>
     </div>
+        -->
+
     <div v-for="movie in movies" v-bind:key="movie">
       <h1>{{ movie.title }}</h1>
-      <button v-on:click="showMovie(movie)">More info!</button>
-    </div> -->
+      <p>{{ movie.plot }}</p>
+      <br />
+    </div>
 
     <!-- <dialog id="movie-details">
       <form method="dialog">
