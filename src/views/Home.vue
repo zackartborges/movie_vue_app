@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <!-- <div>
+    <!-- <img src="./assets/movie_man.jpg" /> -->
+    <div>
       Title:
       <input type="text" v-model="newMovieTitle" />
       Year:
@@ -15,7 +16,8 @@
     <div v-for="movie in movies" v-bind:key="movie">
       <h1>{{ movie.title }}</h1>
       <button v-on:click="showMovie(movie)">More info!</button>
-    </div> -->
+    </div>
+    -->
     <!-- <dialog id="movie-details">
       <form method="dialog">
         <h1>Movie Info</h1>
