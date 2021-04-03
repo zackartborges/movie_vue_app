@@ -1,28 +1,55 @@
 <template>
   <div class="movies-show">
+    <h1>{{ message }}</h1>
     <div class="container">
-      <h1>{{ message }}</h1>
       <h1 class="title">{{ movie.title }}</h1>
       <p>
+        Plot:
         {{ movie.plot }}
+        <br />
+        Director:
+        {{ movie.director }}
+        <br />
+        Year:
+        {{ movie.year }}
+        <br />
       </p>
       <button v-on:click="destroyMovie(movie)" type="button" class="btn btn-danger">Delete</button>
-      <button v-on:click="updateMovie(movie)" type="button" class="btn btn-info">Update</button>
+      <button v-on:click="showMovie(movie)" type="button" class="btn btn-info">Update</button>
     </div>
     <!-- <router-link v-bind:to="`/movies/${recipe.id}/edit`">See more info</router-link> -->
     <div>
-      <!-- <dialog id="movie-details"> -->
-      <!-- <form method="dialog"> -->
+      <dialog id="movie-details">
+        <form method="dialog">
+          <h2>Movie</h2>
+          <p>
+            Title:
+            <input type="text" v-model="movie.title" />
+          </p>
+          <p>
+            Plot:
+            <input type="text" v-model="movie.plot" />
+          </p>
+          <p>
+            Director:
+            <input type="text" v-model="movie.director" />
+          </p>
+          <p>
+            Year:
+            <input type="text" v-model="movie.year" />
+          </p>
+          <button>Close</button>
+          <button v-on:click="updateMovie(movie)">Update Movie</button>
+        </form>
+      </dialog>
     </div>
-    <!-- </form> -->
-    <!-- </dialog> -->
   </div>
 </template>
 <style>
 .container {
 }
 .title {
-  margin: 3em 0;
+  margin: 0.5em 0;
   color: blueviolet;
 }
 </style>
@@ -67,6 +94,11 @@ export default {
       axios.patch("/api/movies/" + movie.id, params).then((response) => {
         console.log("Succeeeesss!!", response.data);
       });
+    },
+    showMovie: function (movie) {
+      console.log(movie);
+      this.currentmovie = movie;
+      document.querySelector("#movie-details").showModal();
     },
   },
 };
