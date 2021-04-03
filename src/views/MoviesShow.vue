@@ -1,11 +1,13 @@
 <template>
   <div class="movies-show">
-    <h1>{{ message }}</h1>
     <div class="container">
-      <h1>{{ movie.title }}</h1>
+      <h1>{{ message }}</h1>
+      <h1 class="title">{{ movie.title }}</h1>
       <p>
         {{ movie.plot }}
       </p>
+      <button v-on:click="destroyMovie(movie)" type="button" class="btn btn-danger">Delete</button>
+      <button v-on:click="updateMovie(movie)" type="button" class="btn btn-info">Update</button>
     </div>
     <!-- <router-link v-bind:to="`/movies/${recipe.id}/edit`">See more info</router-link> -->
     <div>
@@ -17,8 +19,11 @@
   </div>
 </template>
 <style>
-body {
-  background-color: blanchedalmond;
+.container {
+}
+.title {
+  margin: 3em 0;
+  color: blueviolet;
 }
 </style>
 <script>
@@ -33,7 +38,10 @@ export default {
     };
   },
   created: function () {
-    axios.get("/api/movies/" + this.$route.params.id);
+    axios.get("/api/movies/" + this.$route.params.id).then((response) => {
+      console.log(response.data);
+      this.movie = response.data;
+    });
   },
   methods: {
     // showMovie: function () {
@@ -42,13 +50,13 @@ export default {
     //     this.movie = response.data;
     //   });
     // },
-    // destroyMovie: function (movie) {
-    //   axios.delete("/api/movies/" + movie.id).then((response) => {
-    //     console.log("Success!", response.data);
-    //     var index = this.movies.indexOf(movie);
-    //     this.movies.splice(index, 1);
-    //   });
-    // },
+    destroyMovie: function (movie) {
+      axios.delete("/api/movies/" + movie.id).then((response) => {
+        console.log("Success!", response.data);
+        var index = this.movies.indexOf(movie);
+        this.movies.splice(index, 1);
+      });
+    },
     updateMovie: function (movie) {
       var params = {
         title: movie.title,
