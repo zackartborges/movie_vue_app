@@ -3,13 +3,17 @@
     <h1>{{ message }}</h1>
     <div>
       <button>Sort Alphabetically</button>
+      <div v-for="movie in orderBy(movies, 'title')" v-bind:key="movie.id"></div>
+      <div v-for="movie in orderBy(filterBy(movies, titleFilter, 'title'), 'title')" v-bind:key="movie.id"></div>
     </div>
     <br />
+    <!-- datalist for autocomplete -->
     Search by name:
     <input v-model="titleFilter" list="titles" />
     <datalist id="titles">
       <option v-for="movie in movies" v-bind:key="movie.id">{{ movie.title }}</option>
     </datalist>
+    <!-- ----- -->
     <div v-for="movie in movies" v-bind:key="movie.id">
       <!-- <div class="jumbotron jumbotron-fluid">
         <div class="container"> -->
