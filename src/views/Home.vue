@@ -1,55 +1,18 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
-    <!-- <img src="./assets/movie_man.jpg" /> -->
-    <!-- <div>
-      Title:
-      <input type="text" v-model="newMovieTitle" />
-      Year:
-      <input type="text" v-model="newMovieYear" />
-      Plot:
-      <input type="text" v-model="newMoviePlot" />
-      Director:
-      <input type="text" v-model="newMovieDirector" />
-      <button v-on:click="createMovie">Add a Movie!</button>
+    <div class="jumbotron">
+      <h1 class="display-4">WELCOME TO THE MOVIE WEBSITE!</h1>
+      <p class="lead">THIS IS WHERE YOU SEE MOVIE STUFF</p>
+      <hr class="my-4" />
+      <p>SO nice to have you.</p>
+      <a class="btn btn-warning btn-lg" href="/movies" role="button">See All Movies</a>
     </div>
-        -->
-
-    <div v-for="movie in movies" v-bind:key="movie">
-      <h1>{{ movie.title }}</h1>
-      <p>{{ movie.plot }}</p>
-      <br />
-    </div>
-
-    <!-- <dialog id="movie-details">
-      <form method="dialog">
-        <h1>Movie Info</h1>
-        <p>
-          Title:
-          <input type="text" v-model="currentMovie.title" />
-        </p>
-        <p>
-          Year:
-          <input type="text" v-model="currentMovie.year" />
-        </p>
-        <p>
-          Plot:
-          <input type="text" v-model="currentMovie.plot" />
-        </p>
-        <p>
-          Director:
-          <input type="text" v-model="currentMovie.director" />
-        </p>
-        <button v-on:click="updateMovie(currentMovie)">Update Movie Info</button>
-        <button v-on:click="destroyMovie(currentMovie)">Terminate Movie</button>
-        <button>Close</button>
-      </form>
-    </dialog> -->
   </div>
 </template>
 <style>
 body {
-  background-color: blanchedalmond;
+  background-color: blanchedalmond !important
+;
 }
 </style>
 <script>

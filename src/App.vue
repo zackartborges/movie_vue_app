@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Navbar</a>
       <button
         class="navbar-toggler"
@@ -26,14 +26,21 @@
             <a class="nav-link" href="/movies">All Movies</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/signup">Signup</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/movies/new">Add a Movie</a>
           </li>
+          <span v-if="isLoggedIn()">
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </span>
+          <span v-else>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup">Signup</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+          </span>
           <!-- <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -107,3 +114,19 @@
   color: #42b983;
 }
 </style>
+<script>
+// import axios from "axios"
+export default {
+  data: function () {
+    return {
+      errors: [],
+    };
+  },
+  created: function () {},
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
+  },
+};
+</script>

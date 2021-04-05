@@ -71,12 +71,6 @@ export default {
     });
   },
   methods: {
-    // showMovie: function () {
-    //   axios.get("/api/movies/" + this.$route.params.id).then((response) => {
-    //     console.log(response.data);
-    //     this.movie = response.data;
-    //   });
-    // },
     destroyMovie: function (movie) {
       axios.delete("/api/movies/" + movie.id).then((response) => {
         console.log("Success!", response.data);

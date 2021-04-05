@@ -1,20 +1,37 @@
 <template>
   <div class="movies-index">
     <h1>{{ message }}</h1>
-
+    <div>
+      <button>Sort Alphabetically</button>
+    </div>
+    <br />
+    Search by name:
+    <input v-model="titleFilter" list="titles" />
+    <datalist id="titles">
+      <option v-for="movie in movies" v-bind:key="movie.id">{{ movie.title }}</option>
+    </datalist>
     <div v-for="movie in movies" v-bind:key="movie.id">
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+      <!-- <div class="jumbotron jumbotron-fluid">
+        <div class="container"> -->
+      <div class="_card card" style="width: 18rem">
+        <!-- <img src="" class="card-img-top" alt="..." /> -->
+        <div class="card-body">
           <router-link v-bind:to="`/movies/${movie.id}`" class="display-4">
-            <h1>{{ movie.title }}</h1>
+            <h5 class="card-title">{{ movie.title }}</h5>
           </router-link>
-          <p>{{ movie.plot }}</p>
+
+          <p class="card-text">
+            {{ movie.plot }}
+          </p>
         </div>
       </div>
+      <!-- </div>
+      </div> -->
       <!-- <router-link v-bind:to="`/movies/${movie.id}`">
         <h1>{{ movie.title }}</h1>
       </router-link> -->
     </div>
+
     <!-- <dialog id="movie-details">
       <form method="dialog">
         <h1>Movie Info</h1>
@@ -45,16 +62,27 @@
 body {
   background-color: blanchedalmond;
 }
+.movies_index {
+  text-align: center !important;
+}
+._card {
+  margin: 6% 40%;
+}
 </style>
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
+
 // import func from "vue-editor-bridge";
 export default {
+  mixins: [Vue2Filters.mixin],
+
   data: function () {
     return {
       message: "All Movies",
       movies: [],
       errors: [],
+      titleFilter: "",
     };
   },
   created: function () {

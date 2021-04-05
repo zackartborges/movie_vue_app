@@ -1,21 +1,26 @@
 <template>
   <div class="movies-new">
     <h1>{{ message }}</h1>
-    <div>
-      Title:
-      <input type="text" v-model="newMovieTitle" />
-      Year:
-      <input type="text" v-model="newMovieYear" />
-      Plot:
-      <input type="text" v-model="newMoviePlot" />
-      Director:
-      <input type="text" v-model="newMovieDirector" />
-      <button v-on:click="createMovie">Add a Movie!</button>
-    </div>
-    <div v-for="movie in movies" v-bind:key="movie">
-      <h1>{{ movie.title }}</h1>
-      <button v-on:click="showMovie(movie)">More info!</button>
-    </div>
+    <form @submit.prevent="submitForm">
+      <div>
+        Title:
+        <input type="text" v-model="newMovieTitle" />
+        Year:
+        <input type="text" v-model="newMovieYear" />
+        Plot:
+        <input type="text" v-model="newMoviePlot" />
+        <!-- <p vif:="!plotIsValid" class="error-message">The Plot is too long.</p>
+        Director: -->
+        <!-- <input type="text" v-model="newMovieDirector" /> -->
+        Character Count:
+        <input type="text" v-model="characterCount" />
+        <button v-on:click="createMovie">Add a Movie!</button>
+      </div>
+      <div v-for="movie in movies" v-bind:key="movie">
+        <h1>{{ movie.title }}</h1>
+        <button v-on:click="showMovie(movie)">More info!</button>
+      </div>
+    </form>
     <dialog id="movie-details">
       <form method="dialog">
         <h1>Movie Info</h1>
@@ -57,10 +62,16 @@ export default {
       errors: [],
     };
   },
-  created: function () {
-    this.indexMovies();
-  },
+  created: function () {},
   methods: {
+    // submitForm() {
+    //   var plotIsValid = this.form.newMoviePlot.length < 20;
+    //   if (plotIsValid) {
+    //     console.log("form submitted");
+    //   } else {
+    //     console.log("invalid form");
+    //   }
+    // },
     indexMovies: function () {
       axios.get("/api/movies").then((response) => {
         this.movies = response.data;
