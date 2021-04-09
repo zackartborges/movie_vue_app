@@ -7,6 +7,8 @@
       <p>SO nice to have you.</p>
       <a class="btn btn-warning btn-lg" href="/movies" role="button">See All Movies</a>
     </div>
+    <br />
+    <h2>Thank you for coming to my website. Don't forget to tip your waiter!</h2>
   </div>
 </template>
 <style>
@@ -24,10 +26,6 @@ export default {
       message: "Welcome to the home page!",
       movies: [],
       currentMovie: {},
-      newMovieTitle: "",
-      newMovieYear: "",
-      newMoviePlot: "",
-      newMovieDirector: "",
       errors: [],
     };
   },
