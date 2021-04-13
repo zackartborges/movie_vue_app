@@ -41,6 +41,10 @@
               <a class="nav-link" href="/login">Login</a>
             </li>
           </span>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/html">Random HTML</a>
+          </li>
           <!-- <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
