@@ -8,16 +8,14 @@
       <label for="food">Whats your favorite?</label>
       <br />
       Popcorn -
-      <input type="radio" name="food" id="popcorn" v-on:click="choosePopcorn" />
+      <input v-model="food" type="radio" value="popcorn" id="popcorn" />
       <br />
       Rice -
-      <input type="radio" name="food" id="rice" v-on:click="chooseRice" />
+      <input v-model="food" type="radio" value="rice" id="rice" />
       <br />
       Chocolate -
-      <input type="radio" name="food" id="chocolate" v-on:click="chooseChocolate" />
-      <small v-if="chooseChocolate">WOW! Chocolate</small>
-      <small v-if="choosePopcorn">Yum Popcorn</small>
-      <small v-if="chooseRice">Rice!</small>
+      <input v-model="food" type="radio" value="chocolate" id="chocolate" />
+      <h3>Favorite food: {{ food }}</h3>
     </div>
   </div>
 </template>
@@ -31,9 +29,7 @@
 export default {
   data: function () {
     return {
-      choosePopcorn: false,
-      chooseRice: false,
-      chooseChocolate: false,
+      food: "WBb",
     };
   },
 };
